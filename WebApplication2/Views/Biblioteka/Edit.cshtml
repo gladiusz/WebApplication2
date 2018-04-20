@@ -12,7 +12,10 @@
         <legend>Ksiazka:</legend>
 
         <div class="editor-label">Tytul</div>
-        <div class="editor-field"><input name="ksiazka.Tytul" value="@Model.Tytul" /> </div>
+        <div class="editor-field">
+            <input name="ksiazka.Tytul" value="@Model.Tytul" /> 
+            @Html.ValidationMessage("ksiazka.Tytul")
+        </div>
 
         <div class="editor-label">Autor</div>
         <div class="editor-field"><input name="ksiazka.Autor" value="@Model.Autor" /> </div>

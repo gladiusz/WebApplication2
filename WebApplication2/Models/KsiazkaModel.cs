@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication2.Models
 {
     public class KsiazkaModel
     {
         public enum OkladkaTyp { brakInfo, twarda, miekka };
-
+        [Required(ErrorMessage = "Podaj Tytul")]
+        [StringLength(200, ErrorMessage = "Adres max 200 znaków")]
         public string Tytul { get; set; }
         public string Autor { get; set; }
         public int IloscStron { get; set; }

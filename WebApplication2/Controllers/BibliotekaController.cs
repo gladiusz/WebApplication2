@@ -34,6 +34,8 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Edit(int? id, KsiazkaModel ksiazka)
         {
+            if (!ModelState.IsValid)
+                return View(ksiazka);
             if (id == null)
                 data.Add(ksiazka);
             else
