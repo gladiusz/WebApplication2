@@ -1,0 +1,33 @@
+﻿@using WebApplication2.Models;
+@model List<KsiazkaModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Biblioteka</h2>
+
+<form method="get" action="/Biblioteka/Edit">
+    <table>
+        <tr>
+            <th>Tytul</th>
+            <th>Autor</th>
+            <th>Liczba stron</th>
+            <th>Okladka</th>
+        </tr>
+        @{ int id = 0; }
+        @foreach (KsiazkaModel ksiazka in Model)
+        {
+            <tr>
+                <td>@ksiazka.Tytul</td>
+                <td>@ksiazka.Autor</td>
+                <td>@ksiazka.IloscStron</td>
+                <td>@ksiazka.Okladka</td>
+                <td><a href="/Biblioteka/Edit?id=@id">Edycja</a></td>
+                <td><a href="/Biblioteka/Delete?id=@id">Usun</a></td>
+            </tr>
+            @(id++)
+        }
+    </table>
+    <a href="/Biblioteka/Edit">Dodaj</a>
+</form>
+

@@ -1,0 +1,20 @@
+######################
+# VS Generated Files #
+######################
+.vs
+packages
+*/App_Data
+*/bin
+*/fonts
+*/obj
+*/Scripts
+*/Properties
+*.config
+*/favicon.ico
+*/Global.asax
+*/Global.asax.cs
+*/Project_Readme.html
+*/Startup.cs
+*/WebApplication2.csproj
+*/WebApplication2.csproj.user
+WebApplication2.sln

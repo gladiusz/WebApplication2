@@ -1,0 +1,37 @@
+﻿@using WebApplication2.Models;
+@model KsiazkaModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Dodaj</h2>
+
+<form method="post">
+    <fieldset>
+
+        <legend>Ksiazka:</legend>
+
+        <div class="editor-label">Tytul</div>
+        <div class="editor-field"><input name="ksiazka.Tytul" value="@Model.Tytul" /> </div>
+
+        <div class="editor-label">Autor</div>
+        <div class="editor-field"><input name="ksiazka.Autor" value="@Model.Autor" /> </div>
+
+        <div class="editor-label">Ilosc stron</div>
+        <div class="editor-field"><input name="ksiazka.IloscStron" value="@Model.IloscStron" /> </div>
+
+        <div class="editor-label">Okladka</div>
+        <div class="editor-field">
+            <input type="radio" name="ksiazka.Okladka"  value="@KsiazkaModel.OkladkaTyp.miekka" /> miekka
+            <input type="radio" name="ksiazka.Okladka" value="@KsiazkaModel.OkladkaTyp.twarda" /> twarda
+        </div>
+
+        <p><input type="submit" value="Dodaj" /></p>
+
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+
