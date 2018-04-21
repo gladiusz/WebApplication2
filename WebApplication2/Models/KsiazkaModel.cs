@@ -8,6 +8,7 @@ namespace WebApplication2.Models
 {
     public class KsiazkaModel
     {
+        public Guid Id { get; set; }
         public enum OkladkaTyp { brakInfo, twarda, miekka };
         [Required(ErrorMessage = "Podaj Tytul")]
         [StringLength(200, ErrorMessage = "Adres max 200 znaków")]

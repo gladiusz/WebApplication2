@@ -9,38 +9,48 @@ namespace WebApplication2.Controllers
 {
     public class BibliotekaController : Controller
     {
-        static List<KsiazkaModel> data = new List<KsiazkaModel>();
+        public KsiazkaRepository ksiazki = new KsiazkaRepository();
 
 
         public ActionResult Index()
         {
-            return View(data);
+            return View(ksiazki.GetList());
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
-            data.RemoveAt(id);
+            ksiazki.Delete(id);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
-            return View(id != null
-                ? data[(int)id]
-                : new KsiazkaModel());
+            KsiazkaModel ksiazka;
+            if (id != null)
+                ksiazka = ksiazki.Get((Guid)id);
+            else
+                ksiazka = new KsiazkaModel();
+
+            return View(ksiazka);
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, KsiazkaModel ksiazka)
+        public ActionResult Edit(Guid? id, KsiazkaModel ksiazka)
         {
             if (!ModelState.IsValid)
                 return View(ksiazka);
-            if (id == null)
-                data.Add(ksiazka);
-            else
-                data[(int)id] = ksiazka;
 
+            if (id == null)
+                ksiazki.Add(ksiazka);
+            else
+            {
+                KsiazkaModel lksiazka = ksiazki.Get((Guid)id);
+                lksiazka.Tytul = ksiazka.Tytul;
+                lksiazka.Autor = ksiazka.Autor;
+                lksiazka.IloscStron = ksiazka.IloscStron;
+                lksiazka.Okladka = ksiazka.Okladka;
+            }
             return RedirectToAction("Index");
         }
 

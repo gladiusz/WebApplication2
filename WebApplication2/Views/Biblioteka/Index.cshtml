@@ -14,7 +14,6 @@
             <th>Liczba stron</th>
             <th>Okladka</th>
         </tr>
-        @{ int id = 0; }
         @foreach (KsiazkaModel ksiazka in Model)
         {
             <tr>
@@ -22,10 +21,9 @@
                 <td>@ksiazka.Autor</td>
                 <td>@ksiazka.IloscStron</td>
                 <td>@ksiazka.Okladka</td>
-                <td><a href="/Biblioteka/Edit?id=@id">Edycja</a></td>
-                <td><a href="/Biblioteka/Delete?id=@id">Usun</a></td>
+                <td>@Html.ActionLink("Edytuj", "Edit", new { id = ksiazka.Id })</td>
+                <td>@Html.ActionLink("Usun", "Delete", new { id = ksiazka.Id })</td>
             </tr>
-            @(id++)
         }
     </table>
     <a href="/Biblioteka/Edit">Dodaj</a>
