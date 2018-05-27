@@ -1,4 +1,5 @@
 ﻿@using WebApplication2.Models;
+@using WebApplication2.Resources;
 @model UserModel
 @{
     ViewBag.Title = "Login";
@@ -13,7 +14,7 @@
             <input name="user.Login" value="@Model.Login" />
             @Html.ValidationMessage("user.Login")
         </div>
-        <div class="editor-label">Password</div>
+        <div class="editor-label">@Resources.Password</div>
         <div class="editor-field">
             <input name="user.Password" type="password" value="@Model.Password" />
             @Html.ValidationMessage("user.Password")
@@ -24,4 +25,8 @@
 
 <div>
     @Html.ActionLink("Rejestracja", "Register")
+</div>
+<div>
+    @Html.ActionLink("PL", "SwitchPL")
+    @Html.ActionLink("ENG", "SwitchENG")
 </div>

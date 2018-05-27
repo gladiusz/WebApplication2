@@ -23,7 +23,7 @@ namespace WebApplication2.Controllers
             user = new UserModel();
             if (!ModelState.IsValid)
             {
-                Response.Write("<script>alert('Nie pykło');</script>");
+                Response.Write("<script>alert('"+Resources.Resources.Failed+"');</script>");
                 return View(user);
             }
 
@@ -65,5 +65,17 @@ namespace WebApplication2.Controllers
             Session.Abandon();
             return RedirectToAction("Login");
         }
+
+        public ActionResult SwitchPL()
+        {
+            Response.Cookies.Add(new System.Web.HttpCookie("Culture", "pl-PL"));
+            return RedirectToAction("Login");
+        }
+        public ActionResult SwitchENG()
+        {
+            Response.Cookies.Add(new System.Web.HttpCookie("Culture", "en-US"));
+            return RedirectToAction("Login");
+        }
+
     }
 }
