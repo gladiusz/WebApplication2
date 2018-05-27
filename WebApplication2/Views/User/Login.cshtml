@@ -1,0 +1,27 @@
+﻿@using WebApplication2.Models;
+@model UserModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form method="post">
+    <fieldset>
+        <div class="editor-label">Login</div>
+        <div class="editor-field">
+            <input name="user.Login" value="@Model.Login" />
+            @Html.ValidationMessage("user.Login")
+        </div>
+        <div class="editor-label">Password</div>
+        <div class="editor-field">
+            <input name="user.Password" type="password" value="@Model.Password" />
+            @Html.ValidationMessage("user.Password")
+        </div>
+        <p><input type="submit" value="Zaloguj" /></p>
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("Rejestracja", "Register")
+</div>
