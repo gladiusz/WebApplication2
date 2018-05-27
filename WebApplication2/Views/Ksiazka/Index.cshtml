@@ -1,12 +1,12 @@
 ﻿@using WebApplication2.Models;
-@model List<KsiazkaModel>
+@model MainPageModel
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Biblioteka</h2>
 
-<form method="get" action="/Biblioteka/Edit">
+<form method="get" action="/Ksiazka/Edit">
     <table>
         <tr>
             <th>Tytul</th>
@@ -14,11 +14,11 @@
             <th>Liczba stron</th>
             <th>Okladka</th>
         </tr>
-        @foreach (KsiazkaModel ksiazka in Model)
+        @foreach (KsiazkaModel ksiazka in Model.KsiazkaModelList)
         {
             <tr>
                 <td>@ksiazka.Tytul</td>
-                <td>@ksiazka.Autor</td>
+                <td>@Model.Autor.Get(ksiazka.AutorId).Imie @Model.Autor.Get(ksiazka.AutorId).Nazwisko</td>
                 <td>@ksiazka.IloscStron</td>
                 <td>@ksiazka.Okladka</td>
                 <td>@Html.ActionLink("Edytuj", "Edit", new { id = ksiazka.Id })</td>
@@ -26,6 +26,7 @@
             </tr>
         }
     </table>
-    <a href="/Biblioteka/Edit">Dodaj</a>
+    <a href="/Ksiazka/Edit">Dodaj ksiazke</a>
+    <a href="/Autor/Edit">Dodaj autora</a>
 </form>
 

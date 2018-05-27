@@ -1,0 +1,36 @@
+﻿@using WebApplication2.Models;
+@model AutorModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Dodaj autora</h2>
+<form method="post">
+    <fieldset>
+
+        <legend>Autor:</legend>
+
+        <div class="editor-label">Imie</div>
+        <div class="editor-field">
+            <input name="autor.Imie" value="@Model.Imie" />
+        </div>
+     
+
+        <div class="editor-label">Nazwisko</div>
+        <div class="editor-field">
+            <input name="autor.Nazwisko" value="@Model.Nazwisko" />
+        </div>
+
+        <div class="editor-label">Urodziny</div>
+        <div class="editor-field">
+            <input name="autor.Urodziny" value="@Model.Urodziny" />
+        </div>
+
+        <p><input type="submit" value="Dodaj" /></p>
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("Back", "Index", "Ksiazka")
+</div>
+

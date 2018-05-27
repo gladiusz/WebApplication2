@@ -1,0 +1,48 @@
+﻿@using WebApplication2.Models;
+@model EditPageModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Dodaj ksiazke</h2>
+
+<form method="post">
+    <fieldset>
+
+        <legend>Ksiazka:</legend>
+
+        <div class="editor-label">Tytul</div>
+        <div class="editor-field">
+            <input name="model.KsiazkaModel.Tytul" value="@Model.KsiazkaModel.Tytul" /> 
+            @Html.ValidationMessage("model.KsiazkaModel.Tytul")
+        </div>
+
+        <div class="editor-label">Autor</div>
+        <div class="editor-field">
+            <select name="model.KsiazkaModel.AutorId">
+                <option></option>
+                @foreach (AutorModel autor in Model.AutorModelList)
+                {
+                    <option value="@autor.Id"> @autor.Imie @autor.Nazwisko</option>
+                }
+            </select>
+        </div>
+
+        <div class="editor-label">Ilosc stron</div>
+        <div class="editor-field"><input name="model.KsiazkaModel.IloscStron" value="@Model.KsiazkaModel.IloscStron" /> </div>
+
+        <div class="editor-label">Okladka</div>
+        <div class="editor-field">
+            <input type="radio" name="model.KsiazkaModel.Okladka"  value="@KsiazkaModel.OkladkaTyp.miekka" /> miekka
+            <input type="radio" name="model.KsiazkaModel.Okladka" value="@KsiazkaModel.OkladkaTyp.twarda" /> twarda
+        </div>
+
+        <p><input type="submit" value="Dodaj" /></p>
+
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+
